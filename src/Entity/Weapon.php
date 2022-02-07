@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\WeaponRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @ORM\Entity(repositoryClass=WeaponRepository::class)
@@ -126,18 +128,16 @@ class Weapon
 
     public function insertWeapon(ManagerRegistry $doc) {
         $em = $doc->getManager();
-        foreach($this->players as $p) {
-            $player = new PlayerCharacter();
-            $player->setCharacterName($p["character_name"]);
-            $player->setMaxHp($p["max_hp"]);
-            $player->setHp($p["hp"]);
-            $player->setMaxStamina($p["max_stamina"]);
-            $player->setStamina($p["stamina"]);
-            $player->setMaxEssence($p["max_essence"]);
-            $player->setEssence($p["essence"]);
-            $player->setGold($p["gold"]);
+        foreach($this->weapons as $w) {            
+            $weapon = new Weapon();
+            $weapon->setWeaponName($w["weapon_name"]);
+            $weapon->setWeaponType($w["weapon_type"]);
+            $weapon->setMinDamage($w["min_damage"]);
+            $weapon->setMaxDamage($w["max_damage"]);
+            $weapon->setStaminaConsumption($w["stamina_consumption"]);
+            $weapon->setDescription($w["description"]);            
 
-            $em->persist($player);
+            $em->persist($weapon);
 
             try {
                 $em->flush();

@@ -30,7 +30,7 @@ class PlayerCharacter
     private $damage;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     *  @ORM\Column(type="integer")
      */
     private $maxHp;
 
@@ -89,6 +89,18 @@ class PlayerCharacter
     public function setCharacterName(string $characterName): self
     {
         $this->characterName = $characterName;
+
+        return $this;
+    }
+
+    public function getDamage(): ?int
+    {
+        return $this->damage;
+    }
+
+    public function setDamage(int $damage): self
+    {
+        $this->damage = $damage;
 
         return $this;
     }
@@ -165,43 +177,6 @@ class PlayerCharacter
         return $this;
     }
 
-    public function getGold(): ?int
-    {
-        return $this->gold;
-    }
-
-    public function setGold(int $gold): self
-    {
-        $this->gold = $gold;
-
-        return $this;
-    }
-
-    
-    public function insertPlayer(ManagerRegistry $doc) {
-        $em = $doc->getManager();
-        foreach($this->players as $p) {
-            $player = new PlayerCharacter();
-            $player->setCharacterName($p["character_name"]);
-            $player->setMaxHp($p["max_hp"]);
-            $player->setHp($p["hp"]);
-            $player->setMaxStamina($p["max_stamina"]);
-            $player->setStamina($p["stamina"]);
-            $player->setMaxEssence($p["max_essence"]);
-            $player->setEssence($p["essence"]);
-            $player->setGold($p["gold"]);
-
-            $em->persist($player);
-
-            try {
-                $em->flush();
-                return new Response("Se han salvado los datos correctamente");
-            } catch(\Exception $e) {
-                return new Response("Error al guardar los datos");
-            }
-        }
-    }
-
     public function getExp(): ?int
     {
         return $this->exp;
@@ -210,6 +185,18 @@ class PlayerCharacter
     public function setExp(int $exp): self
     {
         $this->exp = $exp;
+
+        return $this;
+    }
+
+    public function getGold(): ?int
+    {
+        return $this->gold;
+    }
+
+    public function setGold(int $gold): self
+    {
+        $this->gold = $gold;
 
         return $this;
     }
@@ -225,16 +212,32 @@ class PlayerCharacter
 
         return $this;
     }
+    
+    public function insertPlayer(ManagerRegistry $doc) {
+        $em = $doc->getManager();
+        foreach($this->players as $p) {
+            $player = new PlayerCharacter();
+            $player->setCharacterName($p["character_name"]);
+            $player->setDamage($p["damage"]);
+            $player->setMaxHp($p["max_hp"]);
+            $player->setHp($p["hp"]);
+            $player->setMaxStamina($p["max_stamina"]);
+            $player->setStamina($p["stamina"]);
+            $player->setMaxEssence($p["max_essence"]);
+            $player->setEssence($p["essence"]);
+            $player->setExp($p["exp"]);            
+            $player->setGold($p["gold"]);
+            $player->setPotionCounter($p["potion_counter"]);
 
-    public function getDamage(): ?int
-    {
-        return $this->damage;
+            $em->persist($player);
+
+            try {
+                $em->flush();
+                return new Response("Se han salvado los datos correctamente");
+            } catch(\Exception $e) {
+                return new Response("Error al guardar los datos");
+            }
+        }
     }
 
-    public function setDamage(int $damage): self
-    {
-        $this->damage = $damage;
-
-        return $this;
-    }
 }
