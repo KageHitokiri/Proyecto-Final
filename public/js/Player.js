@@ -202,28 +202,37 @@ class Player {
             essence : player.getEssence(),
             exp : player.getExp(),
             gold : player.getGold(),
-            potionCounter : player.getPotions(),
-            log: "Amanece un nuevo día.\n"
+            potionCounter : player.getPotions()
+            
         }
 
         localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
         
-        fetch('/player/upload/{data}',{
-            method: 'POST',
-            body: JSON.stringify(dataToUpload),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        $.ajax({
+            type: "POST",
+            url : `/player/upload`,
+            data:  JSON.stringify(dataToUpload)           
+
+        }).done((response)=>{
+            alert(response);
         })
-        .then(function(response) {
-            return response.text();
-        })
-        .then(function(data) {
-            console.log(data);
-        })
-        .catch(function(error) {
-            console.error(error);
-        });
+
+        // fetch('/player/upload',{
+        //     method: 'POST',            
+        //     body: dataToUpload,
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(function(response) {
+        //     return response.text();
+        // })
+        // .then(function(test) {
+        //     console.log(test);
+        // })
+        // .catch(function(error) {
+        //     console.error(error);
+        // });
         
     }
 

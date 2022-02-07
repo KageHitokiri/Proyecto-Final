@@ -215,29 +215,14 @@ class PlayerCharacter
     
     public function insertPlayer(ManagerRegistry $doc) {
         $em = $doc->getManager();
-        foreach($this->players as $p) {
-            $player = new PlayerCharacter();
-            $player->setCharacterName($p["character_name"]);
-            $player->setDamage($p["damage"]);
-            $player->setMaxHp($p["max_hp"]);
-            $player->setHp($p["hp"]);
-            $player->setMaxStamina($p["max_stamina"]);
-            $player->setStamina($p["stamina"]);
-            $player->setMaxEssence($p["max_essence"]);
-            $player->setEssence($p["essence"]);
-            $player->setExp($p["exp"]);            
-            $player->setGold($p["gold"]);
-            $player->setPotionCounter($p["potion_counter"]);
-
-            $em->persist($player);
+        $em->persist($this);
 
             try {
                 $em->flush();
                 return new Response("Se han salvado los datos correctamente");
             } catch(\Exception $e) {
                 return new Response("Error al guardar los datos");
-            }
-        }
+            }        
     }
 
 }
