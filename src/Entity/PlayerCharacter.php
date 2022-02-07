@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\PlayerCharacterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @ORM\Entity(repositoryClass=PlayerCharacterRepository::class)
@@ -156,5 +158,29 @@ class PlayerCharacter
         $this->gold = $gold;
 
         return $this;
+    }
+
+    public function insertPlayer(ManagerRegistry $doc) {
+        $em = $doc->getManager();
+        foreach($this->players as $p) {
+            $player = new PlayerCharacter();
+            $player->setCharacterName($p["character_name"]);
+            $player->setMaxHp($p["max_hp"]);
+            $player->setHp($p["hp"]);
+            $player->setMaxStamina($p["max_stamina"]);
+            $player->setStamina($p["stamina"]);
+            $player->setMaxEssence($p["max_essence"]);
+            $player->setEssence($p["essence"]);
+            $player->setGold($p["gold"]);
+
+            $em->persist($player);
+
+            try {
+                $em->flush();
+                return new Response("Se han salvado los datos correctamente");
+            } catch(\Exception $e) {
+                return new Response("Error al guardar los datos");
+            }
+        }
     }
 }
