@@ -2,6 +2,11 @@
 
 {% block title %} DicePals | El juego {% endblock %}
 
+{% block stylesheets %}
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
 
          <div class="container">
@@ -115,6 +120,13 @@
             </div>
         </div>
     </div>   
+    <div class="container">
+        <div class="row">
+            <div id="terminal__id" class="col-12 col-md-10 border border-dark">
+                <textarea id="log" class="md-2" readonly></textarea>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}
