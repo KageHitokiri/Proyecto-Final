@@ -201,8 +201,7 @@ class Player {
 
 
     uploadPlayerData(){
-        if (player.getId()==null) {
-            
+        if (player.getId()==null) {            
             let dataToUpload = {
                 name : player.getName(),
                 maxHp : player.getMaxHp(),
@@ -214,8 +213,7 @@ class Player {
                 essence : player.getEssence(),
                 exp : player.getExp(),
                 gold : player.getGold(),
-                potionCounter : player.getPotions()
-               
+                potionCounter : player.getPotions()               
             }
     
             localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
@@ -223,12 +221,12 @@ class Player {
             $.ajax({
                 type: "POST",
                 url : `/player/create`,
-                data:  JSON.stringify(dataToUpload)           
-    
+                data:  JSON.stringify(dataToUpload)               
             }).done((response)=>{
                 player.setId(response);
                 alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han almacenado correctamente`);
             })
+
         } else {
             let dataToUpload = {
                 id : player.getId(),
@@ -242,8 +240,7 @@ class Player {
                 essence : player.getEssence(),
                 exp : player.getExp(),
                 gold : player.getGold(),
-                potionCounter : player.getPotions()
-               
+                potionCounter : player.getPotions()               
             }
     
             localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
@@ -251,15 +248,12 @@ class Player {
             $.ajax({
                 type: "POST",
                 url : `/player/update/${player.getId()}`,
-                data:  JSON.stringify(dataToUpload)           
-    
+                data:  JSON.stringify(dataToUpload)    
             }).done((response)=>{               
                 alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han almacenado correctamente`);
             })
         }
     }
-
-   
 
     downloadPlayerData(){
         let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));
