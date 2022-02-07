@@ -1,0 +1,31 @@
+
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+$hpColor: #d61313;
+$staminaColor: #be991e;
+$essenceColor: #7419b1;
+$secondaryColor: #dfd329;
+$backgroundMainColor: #dbdbdb;
+
+$goldColor: #9e962c;
+
+body{
+    background-color: $backgroundMainColor;
+}
+.hpColor{
+    color: $hpColor;
+}
+.staminaColor{
+    color: $staminaColor;
+}
+.essenceColor{
+    color: $essenceColor;
+}
+.goldColor{
+    color: $goldColor;
+}
+
+@mixin test(){
+    color:black;
+}

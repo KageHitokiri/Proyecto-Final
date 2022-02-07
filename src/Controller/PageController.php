@@ -9,11 +9,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     /**
-     * @Route("/", name="page")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
         return $this->render('page/index.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
+    /**
+     * @Route("/play", name="play")
+     */
+    public function launchGame(): Response {
+        return $this->render('page/play.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
+    /**
+     * @Route("/wiki", name="wiki")
+     */
+    public function readWiki(): Response {
+        return $this->render('page/wiki.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }

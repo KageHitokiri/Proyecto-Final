@@ -11,6 +11,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
     
     
@@ -22,8 +23,13 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}        
+            <script src="js/Data.js"></script>
+            <script src="js/interfaces.js"></script>
+            <script src="js/Player.js"></script>      
+            <script src="js/printables.js"></script>    
+            <script src="js/utils.js"></script>
+            <script src="js/Main.js"></script>  
         {% endblock %}
     </head>
 
@@ -32,13 +38,13 @@
             <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
-                <a class="navbar-brand" href="#!">DicePals</a>
+                <a class="navbar-brand" href="/">DicePals</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Página principal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Wiki</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Página principal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="wiki">Wiki</a></li>
+                        <li class="nav-item"><a class="nav-link" href="play">Juega ahora</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Log in</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Log in</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Log in</a></li>
@@ -59,7 +65,7 @@
 
                 <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; CarlosRamosDev 2022</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; CarlosRamosDev 2021 - 2022</p></div>
         </footer>
 
 
