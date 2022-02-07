@@ -201,7 +201,6 @@ class Player {
 
 
     uploadPlayerData(){
-
         if (player.getId()==null) {
             
             let dataToUpload = {
@@ -228,6 +227,7 @@ class Player {
     
             }).done((response)=>{
                 player.setId(response);
+                alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han almacenado correctamente`);
             })
         } else {
             let dataToUpload = {
@@ -254,28 +254,9 @@ class Player {
                 data:  JSON.stringify(dataToUpload)           
     
             }).done((response)=>{               
-                alert(response);
+                alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han almacenado correctamente`);
             })
         }
-        
-
-        // fetch('/player/upload',{
-        //     method: 'POST',            
-        //     body: dataToUpload,
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        // .then(function(response) {
-        //     return response.text();
-        // })
-        // .then(function(test) {
-        //     console.log(test);
-        // })
-        // .catch(function(error) {
-        //     console.error(error);
-        // });
-        
     }
 
    
