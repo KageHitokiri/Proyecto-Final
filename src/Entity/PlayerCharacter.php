@@ -25,6 +25,11 @@ class PlayerCharacter
     private $characterName;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $damage;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $maxHp;
@@ -57,7 +62,19 @@ class PlayerCharacter
     /**
      * @ORM\Column(type="integer")
      */
+    private $exp;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $gold;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $potionCounter;
+
+
 
     public function getId(): ?int
     {
@@ -160,6 +177,7 @@ class PlayerCharacter
         return $this;
     }
 
+    
     public function insertPlayer(ManagerRegistry $doc) {
         $em = $doc->getManager();
         foreach($this->players as $p) {
@@ -182,5 +200,41 @@ class PlayerCharacter
                 return new Response("Error al guardar los datos");
             }
         }
+    }
+
+    public function getExp(): ?int
+    {
+        return $this->exp;
+    }
+
+    public function setExp(int $exp): self
+    {
+        $this->exp = $exp;
+
+        return $this;
+    }
+
+    public function getPotionCounter(): ?int
+    {
+        return $this->potionCounter;
+    }
+
+    public function setPotionCounter(int $potionCounter): self
+    {
+        $this->potionCounter = $potionCounter;
+
+        return $this;
+    }
+
+    public function getDamage(): ?int
+    {
+        return $this->damage;
+    }
+
+    public function setDamage(int $damage): self
+    {
+        $this->damage = $damage;
+
+        return $this;
     }
 }

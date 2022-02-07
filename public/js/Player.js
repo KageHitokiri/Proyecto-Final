@@ -207,6 +207,24 @@ class Player {
         }
 
         localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
+        
+        fetch('/player/upload/{data}',{
+            method: 'POST',
+            body: JSON.stringify(dataToUpload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function(response) {
+            return response.text();
+        })
+        .then(function(data) {
+            console.log(data);
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+        
     }
 
     downloadPlayerData(){
