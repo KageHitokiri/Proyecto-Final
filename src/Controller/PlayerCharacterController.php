@@ -19,15 +19,30 @@ class PlayerCharacterController extends AbstractController
     }
 
     /**
-     * @Route("/player/upload", name="player_character")
+     * @Route("/player/create", name="player_character")
      */
-    public function index(Request $request): Response
+    public function createCharacter(Request $request): Response
     {        
-        
+        $player = new PlayerCharacter();        
+        $this->test($player);
+
+        return new Response($player->getId());        
+    }
+
+    /**
+     * @Route("/player/update/{id}", name="updatePlayer")
+     **/
+    public function updatePlayer(ManagerRegistry $doc, $id) {
+        $repo = $doc->getRepository(PlayerCharacter::class);
+        $player = $repo->find($id);
+        $this->test($player);
+
+        return new Response($id);
+    }
+
+    public function test($player){
         $json = file_get_contents('php://input');        
         $playerData = json_decode($json, false);
-
-        $player = new PlayerCharacter();
 
         $player->setCharacterName($playerData->name);
         $player->setDamage($playerData->damage);
@@ -42,12 +57,5 @@ class PlayerCharacterController extends AbstractController
         $player->setPotionCounter($playerData->potionCounter);
 
         $player->insertPlayer($this->doc);
-
-        return new Response(print_r($playerData));        
-    }
-
-    public function readCharacterJSON() {
-        $test = file_get_contents("php://input");
-        print_r($test);
     }
 }

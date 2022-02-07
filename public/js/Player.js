@@ -2,6 +2,7 @@
 
 class Player {   
     constructor(name, maxHp, damage) {
+        this.id = null;
         this.name = name;
         this.maxHp = maxHp;
         this.hp = 5;
@@ -16,6 +17,13 @@ class Player {
         this.isAliveStatus = true;
     }
     
+    getId(){
+        return this.id;
+    }
+    setId(id){
+        this.id = id;
+    }    
+
     getName() {
         return this.name;
     }
@@ -190,32 +198,66 @@ class Player {
         updatePlayerHP();
     }
 
+
+
     uploadPlayerData(){
-        let dataToUpload = {
-            name : player.getName(),
-            maxHp : player.getMaxHp(),
-            hp : player.getHp(),
-            damage : player.getDamage(),
-            maxStamina : player.getMaxStamina(),
-            stamina : player.getStamina(),
-            maxEssence : player.getMaxEssence(),
-            essence : player.getEssence(),
-            exp : player.getExp(),
-            gold : player.getGold(),
-            potionCounter : player.getPotions()
+
+        if (player.getId()==null) {
             
+            let dataToUpload = {
+                name : player.getName(),
+                maxHp : player.getMaxHp(),
+                hp : player.getHp(),
+                damage : player.getDamage(),
+                maxStamina : player.getMaxStamina(),
+                stamina : player.getStamina(),
+                maxEssence : player.getMaxEssence(),
+                essence : player.getEssence(),
+                exp : player.getExp(),
+                gold : player.getGold(),
+                potionCounter : player.getPotions()
+               
+            }
+    
+            localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
+            
+            $.ajax({
+                type: "POST",
+                url : `/player/create`,
+                data:  JSON.stringify(dataToUpload)           
+    
+            }).done((response)=>{
+                player.setId(response);
+            })
+        } else {
+            let dataToUpload = {
+                id : player.getId(),
+                name : player.getName(),
+                maxHp : player.getMaxHp(),
+                hp : player.getHp(),
+                damage : player.getDamage(),
+                maxStamina : player.getMaxStamina(),
+                stamina : player.getStamina(),
+                maxEssence : player.getMaxEssence(),
+                essence : player.getEssence(),
+                exp : player.getExp(),
+                gold : player.getGold(),
+                potionCounter : player.getPotions()
+               
+            }
+    
+            localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
+            
+            $.ajax({
+                type: "POST",
+                url : `/player/update/${player.getId()}`,
+                data:  JSON.stringify(dataToUpload)           
+    
+            }).done((response)=>{               
+                alert(response);
+            })
         }
-
-        localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
         
-        $.ajax({
-            type: "POST",
-            url : `/player/upload`,
-            data:  JSON.stringify(dataToUpload)           
-
-        }).done((response)=>{
-            alert(response);
-        })
 
         // fetch('/player/upload',{
         //     method: 'POST',            
@@ -235,6 +277,8 @@ class Player {
         // });
         
     }
+
+   
 
     downloadPlayerData(){
         let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));

@@ -225,4 +225,8 @@ class PlayerCharacter
             }        
     }
 
+    public function updatePlayer(ManagerRegistry $doc) {
+        
+    }
+
 }
