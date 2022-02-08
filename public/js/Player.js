@@ -218,7 +218,7 @@ class Player {
 
     uploadPlayerData(){
         if (player.getId()==null) {            
-            let dataToUpload = {
+            let dataToUpload = {                          
                 name : player.getName(),
                 race: player.getRace(),
                 maxHp : player.getMaxHp(),
@@ -242,12 +242,13 @@ class Player {
                 data:  JSON.stringify(dataToUpload)               
             }).done((response)=>{
                 player.setId(response);
-                alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han almacenado correctamente`);
+                alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han creado correctamente.`);
             })
 
         } else {
             let dataToUpload = {
                 id : player.getId(),
+                race: player.getRace(),
                 name : player.getName(),
                 maxHp : player.getMaxHp(),
                 hp : player.getHp(),
@@ -258,7 +259,8 @@ class Player {
                 essence : player.getEssence(),
                 exp : player.getExp(),
                 gold : player.getGold(),
-                potionCounter : player.getPotions()               
+                potionCounter : player.getPotions(),
+                weapon : player.getWeapon()              
             }
     
             localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
@@ -268,13 +270,15 @@ class Player {
                 url : `/player/update/${player.getId()}`,
                 data:  JSON.stringify(dataToUpload)    
             }).done((response)=>{               
-                alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han almacenado correctamente`);
+                alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han actualizado correctamente.`);
             })
         }
     }
 
     downloadPlayerData(){
         let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));
+        this.id = downloadedData.id;
+        this.race = downloadedData.race;
         this.name = downloadedData.name;
         this.maxHp = downloadedData.maxHp;
         this.hp = downloadedData.hp;
@@ -286,7 +290,8 @@ class Player {
         this.exp = downloadedData.exp;
         this.gold = downloadedData.gold;
         this.potionCounter = downloadedData.potionCounter;
-        log.value = downloadedData.log;
+        this.weapon = downloadedData.weapon;
+        log.value = "Amanece un nuevo día.\n";
     }
 }
 
