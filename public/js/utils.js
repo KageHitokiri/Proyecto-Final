@@ -39,29 +39,28 @@ function characterValidation(e){
     }
 
     if (!flag) {
-        data.setPlayerName(formName.value);
+        player.setName(formName.value);
         
         if (formRace.value==="race__human") {
-            data.setPlayerRace("Humano");                    
+            player.setRace("Humano");                    
         }
         if (formRace.value==="race__elf") {
-            data.setPlayerRace("Elfo");
+            player.setRace("Elfo");
         }  
         if (formRace.value==="race__dwarf") {
-            data.setPlayerRace("Enano");
+            player.setRace("Enano");
         }                              
        
         if (formWeapon.value==="weapon__sword") {
-            data.setPlayerWeapon("Espada");
+            player.setWeapon("Espada");
         }
         if (formWeapon.value==="weapon__axe") {
-            data.setPlayerWeapon("Hacha");
+            player.setWeapon("Hacha");
         }  
         if (formWeapon.value==="weapon__mace") {
-            data.setPlayerWeapon("Maza");
+            player.setWeapon("Maza");
         }                              
-               
-        player.setName(data.getPlayerName());
+                      
         data.uploadUserData();
         startScript();
         clearCharacterCreation();

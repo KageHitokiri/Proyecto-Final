@@ -4,6 +4,7 @@ class Player {
     constructor(name, maxHp, damage) {
         this.id = null;
         this.name = name;
+        this.race = "";
         this.maxHp = maxHp;
         this.hp = 5;
         this.damage = damage;
@@ -15,8 +16,9 @@ class Player {
         this.gold = 10;
         this.potionCounter = 1;
         this.isAliveStatus = true;
+        this.weapon = null;
     }
-    
+
     getId(){
         return this.id;
     }
@@ -29,6 +31,13 @@ class Player {
     }
     setName(value) {
         this.name = value;
+    }
+
+    getRace(){
+        return this.race;
+    }
+    setRace(value){
+        this.race=value;
     }
 
     getMaxHp(){
@@ -105,6 +114,13 @@ class Player {
     }
     addExp(value) {
         this.exp += value;
+    }
+
+    getWeapon(){
+        return this.weapon;
+    }
+    setWeapon(value){
+        this.weapon = value;
     }
 
     getAliveStatus(){
@@ -204,6 +220,7 @@ class Player {
         if (player.getId()==null) {            
             let dataToUpload = {
                 name : player.getName(),
+                race: player.getRace(),
                 maxHp : player.getMaxHp(),
                 hp : player.getHp(),
                 damage : player.getDamage(),
@@ -213,7 +230,8 @@ class Player {
                 essence : player.getEssence(),
                 exp : player.getExp(),
                 gold : player.getGold(),
-                potionCounter : player.getPotions()               
+                potionCounter : player.getPotions(),
+                weapon : player.getWeapon()
             }
     
             localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));

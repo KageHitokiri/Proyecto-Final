@@ -45,6 +45,7 @@ class PlayerCharacterController extends AbstractController
         $playerData = json_decode($json, false);
 
         $player->setCharacterName($playerData->name);
+        $player->setRace($playerData->race);
         $player->setDamage($playerData->damage);
         $player->setMaxHp($playerData->maxHp);
         $player->setHp($playerData->hp);
@@ -55,6 +56,7 @@ class PlayerCharacterController extends AbstractController
         $player->setExp($playerData->exp);            
         $player->setGold($playerData->gold);
         $player->setPotionCounter($playerData->potionCounter);
+        $player->setWeapon($playerData->weapon);
 
         $player->insertPlayer($this->doc);
     }

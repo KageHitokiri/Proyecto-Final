@@ -25,6 +25,11 @@ class PlayerCharacter
     private $characterName;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $race;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $damage;
@@ -74,7 +79,10 @@ class PlayerCharacter
      */
     private $potionCounter;
 
-
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $weapon;
 
     public function getId(): ?int
     {
@@ -89,6 +97,18 @@ class PlayerCharacter
     public function setCharacterName(string $characterName): self
     {
         $this->characterName = $characterName;
+
+        return $this;
+    }
+
+    public function getRace(): ?string
+    {
+        return $this->race;
+    }
+
+    public function setRace(string $race): self
+    {
+        $this->race = $race;
 
         return $this;
     }
@@ -212,6 +232,18 @@ class PlayerCharacter
 
         return $this;
     }
+
+    public function getWeapon(): ?string
+    {
+        return $this->weapon;
+    }
+
+    public function setWeapon(?string $weapon): self
+    {
+        $this->weapon = $weapon;
+
+        return $this;
+    }
     
     public function insertPlayer(ManagerRegistry $doc) {
         $em = $doc->getManager();
@@ -223,10 +255,6 @@ class PlayerCharacter
             } catch(\Exception $e) {
                 return new Response("Error al guardar los datos");
             }        
-    }
-
-    public function updatePlayer(ManagerRegistry $doc) {
-        
     }
 
 }
