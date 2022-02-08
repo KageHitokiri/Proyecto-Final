@@ -2,13 +2,46 @@
 
 {% block title %} Acerca de CarlosRamosDev {% endblock %}
 
+{% block javascripts %}        
+    
+{% endblock %}
+
 {% block body %}
     <h1>Acerca de CarlosRamosDev</h1>
-    <p>Esto será un acordeón </p>
-    <div>¿Quien soy?</div>
-    <p></p>
-    <div>Hobbies</div>
-    <p></p>
-    <div>Proyectos</div>
-    <p></p>
+    <div id="accordion">
+        <h3>Quien es CarlosRamosDev 1</h3>
+        <div>
+            <p>Soy Carlos Ramos, estudiante de Desarrollo de Aplicaciones Web</p>            
+        </div>
+        <h3>Aficiones</h3>
+        <div>
+            <p>Disfruto mucho de la programación, pintando miniaturas, y de los juegos de rol y estrategia</p>
+        </div>
+        <h3>Proyectos</h3>
+        <div>
+            <p>Actualmente, DicePals es el proyecto en el que estoy trabajando, como proyecto de final de curso</p>
+            <p>La intención es continuar con el proyecto por mi cuenta aunque no lo termine para el ciclo</p>
+            <p>Es una forma de entretenerme y practicar mis habilidades con la programación</p>
+        </div>
+        <h3>Lenguajes de programación</h3>
+        <div>
+            <h5>Utilizados en DicePals</h5>
+            <div>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>PHP</li>            
+                </ul>
+            </div>
+            <h5>Conocidos</h5>
+            <div>
+                <ul>
+                    <li>TypeScript</li>
+                    <li>JavaScript</li>            
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}
