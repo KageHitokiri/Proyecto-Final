@@ -214,65 +214,54 @@ class Player {
         updatePlayerHP();
     }
 
+    playerInfo(){
+        let dataToUpload = {
+            id : player.getId(),
+            race: player.getRace(),
+            name : player.getName(),
+            maxHp : player.getMaxHp(),
+            hp : player.getHp(),
+            damage : player.getDamage(),
+            maxStamina : player.getMaxStamina(),
+            stamina : player.getStamina(),
+            maxEssence : player.getMaxEssence(),
+            essence : player.getEssence(),
+            exp : player.getExp(),
+            gold : player.getGold(),
+            potionCounter : player.getPotions(),
+            weapon : player.getWeapon()              
+        }
 
+        return dataToUpload;
+    }
 
     uploadPlayerData(){
-        if (player.getId()==null) {            
-            let dataToUpload = {                          
-                name : player.getName(),
-                race: player.getRace(),
-                maxHp : player.getMaxHp(),
-                hp : player.getHp(),
-                damage : player.getDamage(),
-                maxStamina : player.getMaxStamina(),
-                stamina : player.getStamina(),
-                maxEssence : player.getMaxEssence(),
-                essence : player.getEssence(),
-                exp : player.getExp(),
-                gold : player.getGold(),
-                potionCounter : player.getPotions(),
-                weapon : player.getWeapon()
-            }
-    
-            localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
+        let playerData = this.playerInfo();
+
+        if (player.getId()==null) {                                        
             
             $.ajax({
                 type: "POST",
                 url : `/player/create`,
-                data:  JSON.stringify(dataToUpload)               
+                data:  JSON.stringify(playerData)               
             }).done((response)=>{
                 player.setId(response);
                 alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han creado correctamente.`);
             })
 
-        } else {
-            let dataToUpload = {
-                id : player.getId(),
-                race: player.getRace(),
-                name : player.getName(),
-                maxHp : player.getMaxHp(),
-                hp : player.getHp(),
-                damage : player.getDamage(),
-                maxStamina : player.getMaxStamina(),
-                stamina : player.getStamina(),
-                maxEssence : player.getMaxEssence(),
-                essence : player.getEssence(),
-                exp : player.getExp(),
-                gold : player.getGold(),
-                potionCounter : player.getPotions(),
-                weapon : player.getWeapon()              
-            }
-    
-            localStorage.setItem("PlayerData", JSON.stringify(dataToUpload));
-            
+        } else {            
+
             $.ajax({
                 type: "POST",
                 url : `/player/update/${player.getId()}`,
-                data:  JSON.stringify(dataToUpload)    
+                data:  JSON.stringify(playerData)    
             }).done((response)=>{               
                 alert(`Los datos del personaje con identificación nº${response}: ${player.getName()}, se han actualizado correctamente.`);
             })
         }
+
+        localStorage.setItem("PlayerData", JSON.stringify(playerData));
+
     }
 
     downloadPlayerData(){
@@ -296,9 +285,8 @@ class Player {
 }
 
 class Enemy extends Player {
-    constructor(name, maxHp, damage, attackTime, potions, exp, gold) {
-        super(name, maxHp, damage);
-        this.attackTime = attackTime
+    constructor(name, maxHp, damage, potions, exp, gold) {
+        super(name, maxHp, damage);        
         this.potionCounter = potions;
         this.exp = exp
         this.gold = gold;
@@ -341,7 +329,6 @@ class Enemy extends Player {
         this.maxHp = 5;
         this.hp=this.maxHp;
         this.damage=2;
-        this.attackTime = 1000;
         this.potionCounter = 0;
         this.exp = 5;
         this.gold = 2;
@@ -352,8 +339,7 @@ class Enemy extends Player {
         this.name = "Orco";
         this.maxHp = 25;
         this.hp=this.maxHp;
-        this.damage = 5;
-        this.attackTime = 2000;        
+        this.damage = 5;     
         this.potionCounter = 2;
         this.exp = 40;
         this.gold = 10;
@@ -364,8 +350,7 @@ class Enemy extends Player {
         this.name = "Ogro";
         this.maxHp = 50;
         this.hp=this.maxHp;
-        this.damage = 15;
-        this.attackTime = 3000;        
+        this.damage = 15;      
         this.potionCounter = 1;
         this.exp = 100;
         this.gold = 20;
