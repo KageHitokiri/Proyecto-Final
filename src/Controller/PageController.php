@@ -17,6 +17,7 @@ class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
+
     /**
      * @Route("/play", name="play")
      */
@@ -25,11 +26,21 @@ class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
+
     /**
      * @Route("/wiki", name="wiki")
      */
     public function readWiki(): Response {
         return $this->render('page/wiki.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
+
+    /**
+     * @Route("/about", name="about")
+     */
+    public function about(): Response {
+        return $this->render('page/about.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }
