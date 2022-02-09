@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlayerCharacterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,6 +85,16 @@ class PlayerCharacter
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $weapon;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Skill::class, inversedBy="playerCharacters")
+     */
+    private $learnedSkills;
+
+    public function __construct()
+    {
+        $this->learnedSkills = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -255,6 +267,30 @@ class PlayerCharacter
             } catch(\Exception $e) {
                 return new Response("Error al guardar los datos");
             }        
+    }
+
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getLearnedSkills(): Collection
+    {
+        return $this->learnedSkills;
+    }
+
+    public function addLearnedSkill(Skill $learnedSkill): self
+    {
+        if (!$this->learnedSkills->contains($learnedSkill)) {
+            $this->learnedSkills[] = $learnedSkill;
+        }
+
+        return $this;
+    }
+
+    public function removeLearnedSkill(Skill $learnedSkill): self
+    {
+        $this->learnedSkills->removeElement($learnedSkill);
+
+        return $this;
     }
 
 }
