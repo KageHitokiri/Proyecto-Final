@@ -21,7 +21,7 @@ class PlayerCharacterController extends AbstractController
     /**
      * @Route("/player/create", name="player_character")
      */
-    public function createCharacter(Request $request): Response
+    public function createCharacter(): Response
     {        
         $player = new PlayerCharacter();        
         $this->test($player);
