@@ -79,6 +79,11 @@ class Skill
      */
     private $skillLevel;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $hpConsumption;
+
     public function __construct()
     {
         $this->playerCharacters = new ArrayCollection();
@@ -244,6 +249,18 @@ class Skill
     public function setSkillLevel(int $skillLevel): self
     {
         $this->skillLevel = $skillLevel;
+
+        return $this;
+    }
+
+    public function getHpConsumption(): ?int
+    {
+        return $this->hpConsumption;
+    }
+
+    public function setHpConsumption(int $hpConsumption): self
+    {
+        $this->hpConsumption = $hpConsumption;
 
         return $this;
     }
