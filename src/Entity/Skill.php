@@ -45,11 +45,6 @@ class Skill
     private $essenceConsumption;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $fatigue;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -58,6 +53,31 @@ class Skill
      * @ORM\ManyToMany(targetEntity=PlayerCharacter::class, mappedBy="learnedSkills")
      */
     private $playerCharacters;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $staminaFatigue;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $essenceFatigue;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $hpFatigue;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $skillFamily;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $skillLevel;
 
     public function __construct()
     {
@@ -129,18 +149,6 @@ class Skill
         return $this;
     }
 
-    public function getFatigue(): ?int
-    {
-        return $this->fatigue;
-    }
-
-    public function setFatigue(?int $fatigue): self
-    {
-        $this->fatigue = $fatigue;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -176,6 +184,66 @@ class Skill
         if ($this->playerCharacters->removeElement($playerCharacter)) {
             $playerCharacter->removeLearnedSkill($this);
         }
+
+        return $this;
+    }
+
+    public function getStaminaFatigue(): ?int
+    {
+        return $this->staminaFatigue;
+    }
+
+    public function setStaminaFatigue(int $staminaFatigue): self
+    {
+        $this->staminaFatigue = $staminaFatigue;
+
+        return $this;
+    }
+
+    public function getEssenceFatigue(): ?int
+    {
+        return $this->essenceFatigue;
+    }
+
+    public function setEssenceFatigue(int $essenceFatigue): self
+    {
+        $this->essenceFatigue = $essenceFatigue;
+
+        return $this;
+    }
+
+    public function getHpFatigue(): ?int
+    {
+        return $this->hpFatigue;
+    }
+
+    public function setHpFatigue(int $hpFatigue): self
+    {
+        $this->hpFatigue = $hpFatigue;
+
+        return $this;
+    }
+
+    public function getSkillFamily(): ?string
+    {
+        return $this->skillFamily;
+    }
+
+    public function setSkillFamily(string $skillFamily): self
+    {
+        $this->skillFamily = $skillFamily;
+
+        return $this;
+    }
+
+    public function getSkillLevel(): ?int
+    {
+        return $this->skillLevel;
+    }
+
+    public function setSkillLevel(int $skillLevel): self
+    {
+        $this->skillLevel = $skillLevel;
 
         return $this;
     }
