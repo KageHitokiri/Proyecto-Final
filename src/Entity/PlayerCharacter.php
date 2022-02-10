@@ -91,9 +91,15 @@ class PlayerCharacter
      */
     private $learnedSkills;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Quest::class, inversedBy="playerCharacters")
+     */
+    private $questDone;
+
     public function __construct()
     {
         $this->learnedSkills = new ArrayCollection();
+        $this->questDone = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -289,6 +295,30 @@ class PlayerCharacter
     public function removeLearnedSkill(Skill $learnedSkill): self
     {
         $this->learnedSkills->removeElement($learnedSkill);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quest[]
+     */
+    public function getQuestDone(): Collection
+    {
+        return $this->questDone;
+    }
+
+    public function addQuestDone(Quest $questDone): self
+    {
+        if (!$this->questDone->contains($questDone)) {
+            $this->questDone[] = $questDone;
+        }
+
+        return $this;
+    }
+
+    public function removeQuestDone(Quest $questDone): self
+    {
+        $this->questDone->removeElement($questDone);
 
         return $this;
     }
