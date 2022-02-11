@@ -4,8 +4,7 @@ $(function () {
     $('#accordion').accordion({
         collapsible: true,
         active: false
-    }); 
-       
+    });        
 });
 
 function launchToggleEffect(effect, time, id, isEnemyDead){
