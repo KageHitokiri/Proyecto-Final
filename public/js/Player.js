@@ -147,27 +147,13 @@ class Player {
     }
 
     attack(target) { 
-        let damage = this.damage
-        let hpLose = target.getHp(); 
-        glowingEffect("#enemy__statics","red");
-        launchToggleEffect("shake","#enemy__statics",false);        
-        hpLose -= damage;  
-        target.setHp(hpLose);        
-        log.value+=`Atacas al ${enemy.getName()}.\n`
-        printDamage(damage,target.getName());  
-        updatePlayerData();
-        updateEnemyData();
-        if (target.getHp()<=0) {
-            target.kill();
-            log.value+=`${target.getName()} ha caido.\n`;
-            endCombatUI();
-            if (typeof(target==Enemy)) {
-                launchToggleEffect("explode","#enemy__statics",true);
-                target.lootMessage();
-                target.lootEnemy(this);                
-            }
-        } 
-    }
+        let damage = this.damage;
+        let hpLose = target.getHp();    
+        glowingEffect("#enemy__statics","red");     
+        launchToggleEffect("shake",100,"#enemy__statics",false);
+        log.value+=`¡Atacas al ${enemy.getName()}!\n`
+        this.mainAttackFunction(target, damage, hpLose);
+    }    
 
     strongAttack(target) {
 
@@ -176,23 +162,29 @@ class Player {
         } else {
             this.essence--;
             let damage = this.damage*2
-            let hpLose = target.getHp(); 
-            hpLose -= damage;  
-            target.setHp(hpLose);
-            updatePlayerData();
-            updateEnemyData();
-            log.value+=`Atacas a ${enemy.getName()} con un ataque potente!\n`
-            printDamage(damage,target.getName());  
+            glowingEffect("#enemy__statics","red");
+            launchToggleEffect("shake",200,"#enemy__statics",false);
+            let hpLose = target.getHp();             
+            log.value+=`¡Atacas a ${enemy.getName()} con un ataque potente!\n`;
+            this.mainAttackFunction(target, damage, hpLose);            
+        }
+    }
 
-            if (target.getHp()<=0) {
-                target.kill();
-                log.value+=`¡${target.getName()} ha caido!\n`;
-                if (typeof(target==Enemy)) {
-                    target.lootMessage();
-                    target.lootEnemy(this);
-                    console.log(target.getAliveStatus());
-                }
-            } 
+    mainAttackFunction(target, damage, hpLose){
+        hpLose -= damage;  
+        target.setHp(hpLose);                
+        printDamage(damage,target.getName());  
+        updatePlayerData();
+        updateEnemyData();
+        if (target.getHp()<=0) {
+            target.kill();
+            log.value+=`${target.getName()} ha caido.\n`;
+            endCombatUI();
+            if (typeof(target==Enemy)) {
+                launchToggleEffect("explode",500,"#enemy__statics",true);
+                target.lootMessage();
+                target.lootEnemy(this);                
+            }
         }
     }
 

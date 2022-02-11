@@ -7,10 +7,10 @@ $(function () {
     });    
 });
 
-function launchToggleEffect(effect, id, isEnemyDead){
+function launchToggleEffect(effect, time, id, isEnemyDead){
     console.log(id);
     id = $(id);
-    id.toggle(effect,200,()=>{
+    id.toggle(effect,time,()=>{
         if(!isEnemyDead) {
             id.show();
         }        
