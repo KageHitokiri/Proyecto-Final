@@ -43,6 +43,12 @@ textarea {
     padding: 5px;
 }
 
+#death__message{
+    display: none;
+    text-align: center;
+    vertical-align: center;
+}
+
 button{
     padding:5px;
     border-radius: 10px;

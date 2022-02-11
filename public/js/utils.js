@@ -82,7 +82,7 @@ function logAutoScroll(){
 
 function checkDeath(){
     if (player.getHp()<=0){
-        alert("Has muerto");
-        clearUI();
+        chainEffect();        
+        this.preventDefault();    
     }
 }
