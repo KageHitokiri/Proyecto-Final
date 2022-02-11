@@ -44,6 +44,10 @@ class PlayerCharacterController extends AbstractController
         $json = file_get_contents('php://input');        
         $playerData = json_decode($json, false);
 
+        print_r($json);
+        echo "<br>";
+        print_r($playerData);
+
         $player->setCharacterName($playerData->name);
         $player->setRace($playerData->race);
         $player->setDamage($playerData->damage);
