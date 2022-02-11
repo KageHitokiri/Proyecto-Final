@@ -53,8 +53,6 @@ function deathEffect(){
             fontSize: "125"
         }, 5000)
     }, 3500);
-
-
 }
 
 function deathMessage(){

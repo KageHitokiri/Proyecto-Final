@@ -158,7 +158,9 @@ class Player {
     strongAttack(target) {
 
         if (this.essence<=0) {
-            log.value+=`¡No tienes suficiente esencia para esto!\n`; 
+            log.value+=`¡No tienes suficiente esencia para esto!\n`;             
+            glowingEffect("#combat__menu", "yellow");
+            launchToggleEffect("bounce", 500, "#combat__menu", false);
         } else {
             this.essence--;
             let damage = this.damage*2
