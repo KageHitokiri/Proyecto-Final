@@ -153,7 +153,7 @@ class Player {
         launchToggleEffect("shake","#enemy__statics",false);        
         hpLose -= damage;  
         target.setHp(hpLose);        
-        log.value+=`Atacas al ${enemy.getName()}\n`
+        log.value+=`Atacas al ${enemy.getName()}.\n`
         printDamage(damage,target.getName());  
         updatePlayerData();
         updateEnemyData();
@@ -172,7 +172,7 @@ class Player {
     strongAttack(target) {
 
         if (this.essence<=0) {
-            log.value+=`No tienes suficiente esencia para esto\n`; 
+            log.value+=`¡No tienes suficiente esencia para esto!\n`; 
         } else {
             this.essence--;
             let damage = this.damage*2
@@ -181,12 +181,12 @@ class Player {
             target.setHp(hpLose);
             updatePlayerData();
             updateEnemyData();
-            log.value+=`Atacas la ${enemy.getName()} con un ataque potente!\n`
+            log.value+=`Atacas a ${enemy.getName()} con un ataque potente!\n`
             printDamage(damage,target.getName());  
 
             if (target.getHp()<=0) {
                 target.kill();
-                log.value+=`${target.getName()} ha caido.\n`;
+                log.value+=`¡${target.getName()} ha caido!\n`;
                 if (typeof(target==Enemy)) {
                     target.lootMessage();
                     target.lootEnemy(this);
@@ -207,13 +207,13 @@ class Player {
             updatePotions();        
             if (player.hp >= player.maxHp) {
                 player.hp = player.maxHp;
-                log.value+="Tu salud está al máximo\n";                     
+                log.value+="¡Tu salud está al máximo!\n";
             } else {
                 log.value+="\n";
             }
             log.value += `Te quedan un total de ${this.potionCounter} pociones.\n`               
         } else {
-            log.value+="No te quedan pociones\n";
+            log.value+="¡No te quedan pociones!\n";
         }
         updatePlayerHP();
     }
@@ -300,13 +300,13 @@ class Enemy extends Player {
         let lootMessage = `Obtienes: `;
         if (this.potionCounter===0) {                        
         } else if (this.potionCounter===1) {
-            lootMessage += "\n\t-1 poción";
+            lootMessage += "\n\t-1 poción.";
         } else {
-            lootMessage += `\n\t-${this.potionCounter} pociones`;
+            lootMessage += `\n\t-${this.potionCounter} pociones.`;
         }
 
-        lootMessage += `\n\t-${this.exp} puntos de experiencia\n`;
-        lootMessage += `\t-${this.gold} monedas de oro\n`;
+        lootMessage += `\n\t-${this.exp} puntos de experiencia.\n`;
+        lootMessage += `\t-${this.gold} monedas de oro.\n`;
         log.value+=lootMessage;        
     }
     
@@ -315,7 +315,7 @@ class Enemy extends Player {
         let hpLose = target.getHp(); 
         hpLose -= damage;  
         target.setHp(hpLose);
-        log.value+=`El ${this.name} te ataca\n`;
+        log.value+=`El ${this.name} te ataca.\n`;
         updatePlayerData();
         updateEnemyData();
         printDamage(damage,target.getName());              
