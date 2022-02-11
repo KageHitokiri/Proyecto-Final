@@ -149,17 +149,20 @@ class Player {
     attack(target) { 
         let damage = this.damage
         let hpLose = target.getHp(); 
+        glowingEffect("#enemy__statics","red");
+        launchToggleEffect("shake","#enemy__statics",false);        
         hpLose -= damage;  
-        target.setHp(hpLose);
-        updatePlayerData();
-        updateEnemyData();
+        target.setHp(hpLose);        
         log.value+=`Atacas al ${enemy.getName()}\n`
         printDamage(damage,target.getName());  
-
+        updatePlayerData();
+        updateEnemyData();
         if (target.getHp()<=0) {
             target.kill();
             log.value+=`${target.getName()} ha caido.\n`;
+            endCombatUI();
             if (typeof(target==Enemy)) {
+                launchToggleEffect("explode","#enemy__statics",true);
                 target.lootMessage();
                 target.lootEnemy(this);                
             }
@@ -197,6 +200,7 @@ class Player {
         let health =10;
         console.log(this.potionCounter);
         if (this.potionCounter > 0) {
+            glowingEffect("#player__statics","green")
             this.potionCounter--;            
             player.hp += health;            
             log.value += `Te sanas ${health} puntos de vida.\n`;
