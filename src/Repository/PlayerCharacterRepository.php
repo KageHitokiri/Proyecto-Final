@@ -22,7 +22,7 @@ class PlayerCharacterRepository extends ServiceEntityRepository
     // /**
     //  * @return PlayerCharacter[] Returns an array of PlayerCharacter objects
     //  */
-    /*
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,7 +34,7 @@ class PlayerCharacterRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?PlayerCharacter

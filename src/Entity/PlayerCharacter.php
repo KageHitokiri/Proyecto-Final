@@ -96,6 +96,12 @@ class PlayerCharacter
      */
     private $questDone;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="playerCharacters")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->learnedSkills = new ArrayCollection();
@@ -319,6 +325,18 @@ class PlayerCharacter
     public function removeQuestDone(Quest $questDone): self
     {
         $this->questDone->removeElement($questDone);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
