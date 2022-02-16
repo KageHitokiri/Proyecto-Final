@@ -60,4 +60,14 @@ class PlayerCharacterController extends AbstractController
 
         $player->insertPlayer($this->doc);
     }
+
+    /**
+     * @Route("/player/search/{id}", name="searchPlayer")
+     **/
+    public function playerFind(ManagerRegistry $doc, $id) {
+        $repo = $doc->getRepository(PlayerCharacter::class);
+        $player = $repo->find($id);
+
+        return new Response($player);
+    }
 }
