@@ -66,8 +66,8 @@ class PlayerCharacterController extends AbstractController
      **/
     public function playerFind(ManagerRegistry $doc, $id) {
         $repo = $doc->getRepository(PlayerCharacter::class);
-        $player = $repo->find($id);
+        $player = $repo->find($id);            
 
-        return new Response($player);
+        return new Response($player->getCharacterName());
     }
 }
