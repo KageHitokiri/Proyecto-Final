@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\PlayerCharacter;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Serializer;
 
 class PlayerCharacterController extends AbstractController
 {
@@ -60,14 +64,49 @@ class PlayerCharacterController extends AbstractController
 
         $player->insertPlayer($this->doc);
     }
-
+    public function jsonSerialize($player)
+    {
+        return array(
+            'id' => $player->getId(),
+            'race' => $player->getRace(),
+            'name' => $player->getCharacterName(),
+            'damage' => $player->getDamage(),
+            'maxHp' => $player->getMaxHp(),
+            'hp' => $player->getHp(),
+            'maxStamina' => $player->getMaxStamina(),
+            'stamina' => $player->getStamina(),
+            'maxEssence' => $player->getMaxEssence(),
+            'essence' => $player->getEssence(),
+            'exp' => $player->getExp(),
+            'gold' => $player->getGold(),
+            'potionCounter' => $player->getPotionCounter(),
+            'weapon' => $player->getWeapon(),            
+        );
+    }
     /**
      * @Route("/player/search/{id}", name="searchPlayer")
      **/
     public function playerFind(ManagerRegistry $doc, $id) {
         $repo = $doc->getRepository(PlayerCharacter::class);
-        $player = $repo->find($id);            
+        $player = $repo->find($id);
+        $object = json_encode($this->jsonSerialize($player));        
 
-        return new Response($player->getCharacterName());
+        return new Response($object);
     }
+
+    /**
+     * @Route("/player/user/{id}", name="searchByUser")
+     **/
+    public function findByUser(ManagerRegistry $doc, $id) {
+        
+        $characters = $this->getUser()->getPlayerCharacters();
+
+        foreach ($characters as $character){
+            echo $character->getId();
+        }
+        exit;
+
+        return new Response($characters);
+    }
+    
 }

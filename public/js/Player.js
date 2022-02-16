@@ -263,22 +263,24 @@ class Player {
     }
 
     downloadPlayerData(){
-        let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));
-        this.id = downloadedData.id;
-        this.race = downloadedData.race;
-        this.name = downloadedData.name;
-        this.maxHp = downloadedData.maxHp;
-        this.hp = downloadedData.hp;
-        this.damage = downloadedData.damage;
-        this.maxStamina =downloadedData.maxStamina;
-        this.stamina = downloadedData.stamina;
-        this.maxEssence = downloadedData.maxEssence;
-        this.essence = downloadedData.essence;
-        this.exp = downloadedData.exp;
-        this.gold = downloadedData.gold;
-        this.potionCounter = downloadedData.potionCounter;
-        this.weapon = downloadedData.weapon;
-        log.value = "Amanece un nuevo día.\n";
+        //let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));
+        let downloadedData = $.getJSON(`/player/search/${player.getId()}`, function(data) {
+            this.id = downloadedData.id;
+            this.race = downloadedData.race;
+            this.name = downloadedData.name;
+            this.damage = downloadedData.damage;
+            this.maxHp = downloadedData.maxHp;
+            this.hp = downloadedData.hp;        
+            this.maxStamina =downloadedData.maxStamina;
+            this.stamina = downloadedData.stamina;
+            this.maxEssence = downloadedData.maxEssence;
+            this.essence = downloadedData.essence;
+            this.exp = downloadedData.exp;
+            this.gold = downloadedData.gold;
+            this.potionCounter = downloadedData.potionCounter;
+            this.weapon = downloadedData.weapon;
+            log.value = "Amanece un nuevo día.\n";
+        });        
     }
 }
 

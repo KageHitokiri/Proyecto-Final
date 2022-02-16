@@ -20,7 +20,7 @@
 
          <div class="container">
         <div class="row">
-            <div id="login" class="col-4 border border-dark">
+            <div id="login"  class="col-4 border border-dark">
                 <form>
                     <input type="text" id="form__name"/>
                     <label>Usuario</label><br>
@@ -72,13 +72,13 @@
             <div id="player__statics" class="col-5 border border-dark" >    
                 <p id="playerName"></p>
                 <p>Estadísticas</p>
-                <p id='statistics__name'></p>
+                <p id='statistics__name'>{{ User.email }}</p>
                 <p id="statistics__currentHP"></p>
                 <p id="statistics__stamina"></p>
                 <p id="statistics__essence"></p>
                 <p id='statistics__current__XP'></p>
                 <p id="statistics__current__Gold"></p>
-                <p id="statistics__current__Potions"></p>                 
+                <p id="statistics__current__Potions">{{ playerCharacter.potionCounter }}</p>
                 <button id="clearLog">Limpiar el terminal</button>
             </div>
             <div id="enemy__statics" class="col-5 border border-dark">
