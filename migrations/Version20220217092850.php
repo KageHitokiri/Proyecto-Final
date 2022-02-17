@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220216231021 extends AbstractMigration
+final class Version20220217092850 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -25,6 +25,7 @@ final class Version20220216231021 extends AbstractMigration
         $this->addSql('CREATE TABLE player_character_quest (player_character_id INT NOT NULL, quest_id INT NOT NULL, INDEX IDX_64CE9C3E910BEE57 (player_character_id), INDEX IDX_64CE9C3E209E9EF4 (quest_id), PRIMARY KEY(player_character_id, quest_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE quest (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, exp_given INT NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE skill (id INT AUTO_INCREMENT NOT NULL, skill_name VARCHAR(50) NOT NULL, exp_cost INT NOT NULL, skill_type VARCHAR(50) NOT NULL, stamina_consumption INT NOT NULL, essence_consumption INT NOT NULL, description VARCHAR(255) NOT NULL, stamina_fatigue INT NOT NULL, essence_fatigue INT NOT NULL, hp_fatigue INT NOT NULL, skill_family VARCHAR(50) NOT NULL, skill_level INT NOT NULL, hp_consumption INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE weapon (id INT AUTO_INCREMENT NOT NULL, weapon_name VARCHAR(30) NOT NULL, weapon_type VARCHAR(30) NOT NULL, min_damage INT NOT NULL, max_damage INT NOT NULL, stamina_consumption INT NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE player_character_skill ADD CONSTRAINT FK_79E4805E910BEE57 FOREIGN KEY (player_character_id) REFERENCES player_character (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE player_character_skill ADD CONSTRAINT FK_79E4805E5585C142 FOREIGN KEY (skill_id) REFERENCES skill (id) ON DELETE CASCADE');
@@ -44,6 +45,7 @@ final class Version20220216231021 extends AbstractMigration
         $this->addSql('DROP TABLE player_character_quest');
         $this->addSql('DROP TABLE quest');
         $this->addSql('DROP TABLE skill');
+        $this->addSql('DROP TABLE user');
         $this->addSql('DROP TABLE weapon');
     }
 }
