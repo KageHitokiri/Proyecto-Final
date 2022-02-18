@@ -292,7 +292,6 @@ class Player {
             method: "GET",
             success:function(data){
                 downloadedData = JSON.parse(data);
-                console.log(downloadedData);
 
                 player.setId(downloadedData.id);
                 player.setRace(downloadedData.race);
@@ -309,7 +308,6 @@ class Player {
                 player.setPotions(downloadedData.potionCounter);
                 player.setWeapon(downloadedData.weapon);
                 log.value = "Amanece un nuevo día.\n";  
-                console.log(player);
 
                 updatePlayerData();
                 clearGameSelector();                    
