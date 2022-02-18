@@ -60,4 +60,35 @@ class PlayerCharacterController extends AbstractController
 
         $player->insertPlayer($this->doc);
     }
+
+    public function jsonSerialize($player)
+    {
+        return array(
+            'id' => $player->getId(),
+            'race' => $player->getRace(),
+            'name' => $player->getCharacterName(),
+            'damage' => $player->getDamage(),
+            'maxHp' => $player->getMaxHp(),
+            'hp' => $player->getHp(),
+            'maxStamina' => $player->getMaxStamina(),
+            'stamina' => $player->getStamina(),
+            'maxEssence' => $player->getMaxEssence(),
+            'essence' => $player->getEssence(),
+            'exp' => $player->getExp(),
+            'gold' => $player->getGold(),
+            'potionCounter' => $player->getPotionCounter(),
+            'weapon' => $player->getWeapon(),            
+        );
+    }
+
+    /**
+     * @Route("/player/search/{id}", name="searchPlayer")
+     **/
+    public function playerFind(ManagerRegistry $doc, $id) {
+        $repo = $doc->getRepository(PlayerCharacter::class);
+        $player = $repo->find($id);
+        $object = json_encode($this->jsonSerialize($player));        
+
+        return new Response($object);
+    }
 }
