@@ -313,9 +313,7 @@ class Player {
                 clearGameSelector();                    
                 showMainUI(); 
             }
-        });  
-
-            
+        });              
     }
 }
 
