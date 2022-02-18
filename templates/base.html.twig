@@ -13,8 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         
         <script src="js/jquery-3.6.0.js"></script>
-        <script src="js/jquery-ui-1.13.1.custom/jquery-ui.js"></script>    
-        <link href="css/bottom.css" rel="stylesheet" />
+        <script src="js/jquery-ui-1.13.1.custom/jquery-ui.js"></script>            
         <script src="js/effects.js"></script>    
 
         <title>{% block title %} {% endblock %}</title>        
@@ -41,7 +40,13 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'index' ? 'active' }}" aria-current="page" href="/">Página principal</a></li>
                         <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'wiki' ? 'active' }}" href="wiki">Wiki</a></li>
-                        <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'play' ? 'active' }}" href="play">Juega ahora</a></li>
+                        {% if app.user %}
+                            <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'play' ? 'active' }}" href="play">Juega ahora</a></li>                        
+                            <li class="navitem"><a id='id-usuario' data-id='{{app.user.id}}' class="nav-link {{ app.request.get('_route') == 'logout' ? 'active' }}" href="logout">{{app.user.email}} - Cerrar Sesión</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'register' ? 'active' }}" href="register">Registrarse</a></li>
+                            <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'login' ? 'active' }}" href="login">Iniciar Sesión</a></li>                            
+                        {% endif %}
                         <li class="nav-item"><a class="nav-link {{ app.request.get('_route') == 'about' ? 'active' }}" href="about">Acerca de...</a></li>
                     </ul>
                 </div>

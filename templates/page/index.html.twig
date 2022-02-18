@@ -16,12 +16,20 @@
                         <p class="fs-4">
                             ¡Aprovecha ahora la oportunidad de disfrutar de este juego de forma totalmente gratuita!
                         </p>
-                        <a class="btn btn-primary btn-lg" href="play">¡Juega ahora, es gratis!</a>
+                        {% if app.user %}
+                            <a class="btn btn-primary btn-lg" href="play">¡Juega ahora!</a>    
+                        {% else %}                            
+                            <a class="btn btn-primary btn-lg" href="register">¡Inicia sesión para empezar a jugar!</a>
+                            <p class="fs-4">
+                                o
+                            </p>
+                            <a class="btn btn-primary btn-lg" href="register">¡Regístrate ahora, es gratis!</a>
+                        {% endif %}
+                        
                     </div>
                 </div>
             </div>
         </header>
-
 
          <!-- Page Content-->
         <section class="pt-4">
@@ -226,32 +234,5 @@
                 </div>
             </div>                                  
         </section>
-
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Empezar a jugar a DicePals es muy fácil</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Empezar a jugar a DicePals es muy fácil</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Empezar a jugar a DicePals es muy fácil</h1>
-                </div>
-            </div>
-        </div>
-
 {% endblock %}
 
