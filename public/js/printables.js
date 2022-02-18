@@ -1,6 +1,6 @@
-function writeUserName() {
-    document.getElementById('playerName').innerHTML = `Bienvenido, ${data.getUserName()}`;
-}
+// function writeUserName() {
+//     document.getElementById('playerName').innerHTML = `Bienvenido, ${data.getUserName()}`;
+// }
 
 function updatePlayerName(){
     document.getElementById('statistics__name').innerHTML = `${player.getName()}`;

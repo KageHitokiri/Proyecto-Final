@@ -1,11 +1,11 @@
 'use strict'
 
-function clearLogin(){
-    document.getElementById('login').style.display="none";
-}
-function showLogin(){
-    document.getElementById('login').style.display="block";
-}
+// function clearLogin(){
+//     document.getElementById('login').style.display="none";
+// }
+// function showLogin(){
+//     document.getElementById('login').style.display="block";
+// }
 
 function clearGameSelector(){
     document.getElementById('gameSelector').style.display="none";    
@@ -72,11 +72,11 @@ function showTerminal(){
 
 function gameStart(){
     clearUI();    
-    showLogin();
+    showGameSelector();    
 }
 
 function showMainUI(){
-    writeUserName();
+    // writeUserName();
     updatePlayerName();
     showPlayerSatistics();
     showTerminal();
@@ -95,7 +95,7 @@ function endCombatUI(){
 }
 
 function clearUI(){
-    clearLogin();
+//    clearLogin();
     clearGameSelector();
     clearCharacterCreation();
     clearPlayerSatistics();

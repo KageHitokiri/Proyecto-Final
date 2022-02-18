@@ -19,10 +19,10 @@ window.addEventListener('load',()=>{
     })
 
     //Botones de login       
-    document.getElementById('loginBtn').addEventListener('click',(e)=>{        
-        logInValidator(e);
-        storageCheck();          
-    })
+    // document.getElementById('loginBtn').addEventListener('click',(e)=>{        
+    //     logInValidator(e);
+    //     storageCheck();          
+    // })
 
     //Botones de modo
     document.getElementById('newGame').addEventListener('click',()=>{
