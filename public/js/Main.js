@@ -31,7 +31,7 @@ window.addEventListener('load',()=>{
     })
 
     document.getElementById('loadGame').addEventListener('click',()=>{
-        player.downloadPlayerData2(1);       
+        player.downloadPlayerData(1);       
     })    
 
     //Botones de creación de personaje
