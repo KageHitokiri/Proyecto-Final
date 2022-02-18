@@ -24,7 +24,7 @@ class PlayerCharacterController extends AbstractController
     public function createCharacter(): Response
     {        
         $player = new PlayerCharacter();        
-        $this->test($player);
+        $this->test($player, $this->getUser());
 
         return new Response($player->getId());        
     }
@@ -33,14 +33,14 @@ class PlayerCharacterController extends AbstractController
      * @Route("/player/update/{id}", name="updatePlayer")
      **/
     public function updatePlayer(ManagerRegistry $doc, $id) {
-        $repo = $doc->getRepository(PlayerCharacter::class);
-        $player = $repo->find($id);
-        $this->test($player);
+        $characterRepo = $doc->getRepository(PlayerCharacter::class);        
+        $player = $characterRepo->find($id);
+        $this->test($player, $this->getUser());
 
         return new Response($id);
     }
 
-    public function test($player){
+    public function test($player, $user){
         $json = file_get_contents('php://input');        
         $playerData = json_decode($json, false);
 
@@ -57,7 +57,8 @@ class PlayerCharacterController extends AbstractController
         $player->setGold($playerData->gold);
         $player->setPotionCounter($playerData->potionCounter);
         $player->setWeapon($playerData->weapon);
-
+        $player->setUser($user);
+        
         $player->insertPlayer($this->doc);
     }
 
@@ -91,4 +92,6 @@ class PlayerCharacterController extends AbstractController
 
         return new Response($object);
     }
+
+
 }
