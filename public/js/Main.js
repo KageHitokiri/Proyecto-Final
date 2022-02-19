@@ -8,10 +8,17 @@ window.addEventListener('load',()=>{
     let hitHardButton = document.getElementById('hit_hard__button');
     let fleeButton = document.getElementById('flee__button');
     let usePotionButton = document.getElementById('use__potion');
+    //let tbtn = $("#testbtn");
 
     gameStart();   
     updatePlayerData();
     updateEnemyData();
+
+    // tbtn.click(()=>{
+    //     console.log("a");
+    //     data.getPlayerData();
+    //     data.uploadUserData();
+    // })
 
     //Botones de estadisticas del jugador
     document.getElementById('clearLog').addEventListener('click',()=>{
@@ -31,7 +38,9 @@ window.addEventListener('load',()=>{
     })
 
     document.getElementById('loadGame').addEventListener('click',()=>{
-        player.downloadPlayerData(1);       
+        data.getPlayerData();
+        data.uploadUserData();
+        player.downloadPlayerData();       
     })    
 
     //Botones de creación de personaje

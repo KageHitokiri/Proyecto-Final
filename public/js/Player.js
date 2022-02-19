@@ -265,56 +265,60 @@ class Player {
 
     }
 
-    // downloadPlayerData(){
-    //     let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));
-    //     this.id = downloadedData.id;
-    //     this.race = downloadedData.race;
-    //     this.name = downloadedData.name;
-    //     this.maxHp = downloadedData.maxHp;
-    //     this.hp = downloadedData.hp;
-    //     this.damage = downloadedData.damage;
-    //     this.maxStamina =downloadedData.maxStamina;
-    //     this.stamina = downloadedData.stamina;
-    //     this.maxEssence = downloadedData.maxEssence;
-    //     this.essence = downloadedData.essence;
-    //     this.exp = downloadedData.exp;
-    //     this.gold = downloadedData.gold;
-    //     this.potionCounter = downloadedData.potionCounter;
-    //     this.weapon = downloadedData.weapon;
-    //     log.value = "Amanece un nuevo día.\n";
-    // }
+    downloadPlayerData(){
+        let downloadedData = JSON.parse(localStorage.getItem("PlayerData"));
+        this.id = downloadedData.id;
+        this.race = downloadedData.race;
+        this.name = downloadedData.name;
+        this.maxHp = downloadedData.maxHp;
+        this.hp = downloadedData.hp;
+        this.damage = downloadedData.damage;
+        this.maxStamina =downloadedData.maxStamina;
+        this.stamina = downloadedData.stamina;
+        this.maxEssence = downloadedData.maxEssence;
+        this.essence = downloadedData.essence;
+        this.exp = downloadedData.exp;
+        this.gold = downloadedData.gold;
+        this.potionCounter = downloadedData.potionCounter;
+        this.weapon = downloadedData.weapon;
+        log.value = "Amanece un nuevo día.\n";
 
-    downloadPlayerData(id){
-        let downloadedData;
-
-        $.ajax({
-            url: `/player/search/${id}`,
-            method: "GET",
-            success:function(data){
-                downloadedData = JSON.parse(data);
-
-                player.setId(downloadedData.id);
-                player.setRace(downloadedData.race);
-                player.setName(downloadedData.name);
-                player.setMaxHp(downloadedData.maxHp);
-                player.setHp(downloadedData.hp);
-                player.setDamage(downloadedData.damage);
-                player.setMaxStamina(downloadedData.maxStamina);
-                player.setStamina(downloadedData.stamina);
-                player.setMaxEssence(downloadedData.maxEssence);
-                player.setEssence(downloadedData.essence);
-                player.setExp(downloadedData.exp);
-                player.setGold(downloadedData.gold);
-                player.setPotions(downloadedData.potionCounter);
-                player.setWeapon(downloadedData.weapon);
-                log.value = "Amanece un nuevo día.\n";  
-
-                updatePlayerData();
-                clearGameSelector();                    
-                showMainUI(); 
-            }
-        });              
+        updatePlayerData();
+        clearGameSelector();                    
+        showMainUI(); 
     }
+
+    // downloadPlayerData(id){
+    //     let downloadedData;
+
+    //     $.ajax({
+    //         url: `/player/search/${id}`,
+    //         method: "GET",
+    //         success:function(data){
+    //             downloadedData = JSON.parse(data);
+
+    //             player.setId(downloadedData.id);
+    //             player.setRace(downloadedData.race);
+    //             player.setName(downloadedData.name);
+    //             player.setMaxHp(downloadedData.maxHp);
+    //             player.setHp(downloadedData.hp);
+    //             player.setDamage(downloadedData.damage);
+    //             player.setMaxStamina(downloadedData.maxStamina);
+    //             player.setStamina(downloadedData.stamina);
+    //             player.setMaxEssence(downloadedData.maxEssence);
+    //             player.setEssence(downloadedData.essence);
+    //             player.setExp(downloadedData.exp);
+    //             player.setGold(downloadedData.gold);
+    //             player.setPotions(downloadedData.potionCounter);
+    //             player.setWeapon(downloadedData.weapon);
+    //             log.value = "Amanece un nuevo día.\n";  
+
+    //             updatePlayerData();
+    //             clearGameSelector();                    
+    //             showMainUI(); 
+    //         }
+    //     });              
+    // }
 }
 
 class Enemy extends Player {
