@@ -288,11 +288,11 @@ class Player {
         showMainUI(); 
     }
 
-    // downloadPlayerData(id){
+    // downloadPlayerData(){
     //     let downloadedData;
 
     //     $.ajax({
-    //         url: `/player/search/${id}`,
+    //         url: `/player/search/${data.getId()}`,
     //         method: "GET",
     //         success:function(data){
     //             downloadedData = JSON.parse(data);

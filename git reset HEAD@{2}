@@ -1,0 +1,31 @@
+[33m6b18a9b[m[33m ([m[1;36mHEAD -> [m[1;32mDevelop[m[33m)[m HEAD@{0}: checkout: moving from 35f0b7fd1725429384ef83f5979d6e788514c421 to Develop
+[33m35f0b7f[m[33m ([m[1;31morigin/Develop[m[33m)[m HEAD@{1}: checkout: moving from Develop to 35f0b7fd1725429384ef83f5979d6e788514c421
+[33m6b18a9b[m[33m ([m[1;36mHEAD -> [m[1;32mDevelop[m[33m)[m HEAD@{2}: commit: testBtn hide
+[33m35f0b7f[m[33m ([m[1;31morigin/Develop[m[33m)[m HEAD@{3}: commit: userData update
+[33m41fbd1f[m HEAD@{4}: checkout: moving from RelationDevelop to Develop
+[33mef96061[m[33m ([m[1;31morigin/RelationDevelop[m[33m)[m HEAD@{5}: commit: Saves, but not loads
+[33m41fbd1f[m HEAD@{6}: checkout: moving from Develop to RelationDevelop
+[33m41fbd1f[m HEAD@{7}: checkout: moving from relationBranch to Develop
+[33mde992ac[m HEAD@{8}: checkout: moving from Develop to relationBranch
+[33m41fbd1f[m HEAD@{9}: commit: minor bugfixes
+[33m3c2a6e0[m HEAD@{10}: checkout: moving from relationBranch to Develop
+[33mde992ac[m HEAD@{11}: checkout: moving from Develop to relationBranch
+[33m3c2a6e0[m HEAD@{12}: checkout: moving from relationBranch to Develop
+[33mde992ac[m HEAD@{13}: commit: relations created
+[33m3c2a6e0[m HEAD@{14}: checkout: moving from Develop to relationBranch
+[33m3c2a6e0[m HEAD@{15}: commit: minor fixes
+[33mded6d61[m HEAD@{16}: commit: minor fixes
+[33me7ec87d[m HEAD@{17}: commit: downloadPlayerDataV2
+[33m121f4c0[m HEAD@{18}: commit: twig titles
+[33m9fd0e7e[m HEAD@{19}: commit: migrate login section from js to php
+[33m0d767c9[m HEAD@{20}: commit: Register & login style changes
+[33m3bb6f23[m HEAD@{21}: commit: Styles and fixes
+[33m9e31452[m HEAD@{22}: commit: Landing page
+[33m33f2bd2[m HEAD@{23}: commit: user, Login & logout
+[33mcc88be6[m HEAD@{24}: commit: new Commit
+[33m2c138b5[m HEAD@{25}: checkout: moving from 2c138b58003f215e09fdaf1aeb040b04cb01cda0 to Develop
+[33m2c138b5[m HEAD@{26}: checkout: moving from 995975e6dd39641ce76933a499207723dc7c5527 to 2c138b58003f215e09fdaf1aeb040b04cb01cda0
+[33m995975e[m HEAD@{27}: checkout: moving from Development to 995975e6dd39641ce76933a499207723dc7c5527
+[33m28d5a00[m[33m ([m[1;32mDevelopment[m[33m)[m HEAD@{28}: checkout: moving from 28d5a00f16dcd265470f06fcb812341c7895e1d5 to Development
+[33m28d5a00[m[33m ([m[1;32mDevelopment[m[33m)[m HEAD@{29}: checkout: moving from master to 28d5a00f16dcd265470f06fcb812341c7895e1d5
+[33m16f5c22[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{30}: clone: from https://github.com/KageHitokiri/Proyecto-Final
