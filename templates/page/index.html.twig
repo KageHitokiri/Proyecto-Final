@@ -96,6 +96,24 @@
             </div>
             <!-- Tutorial del juego-->
             
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">¡Aprende a jugar!</h1>
+                        <p class="fs-4">
+                            Aquí abajo puedes ver como funciona el juego!
+                        </p>
+                        {% if app.user %}
+                            <p>¡Bienvenido {{app.user.email}}, sigue leyendo para comprender como funciona el juego!</p>
+                        {% else %}
+                            <p>¡Recuerda que para jugar necesitas <a href="">registrarte</a>! y si ya lo has hecho, ¡solo tienes que <a href="">iniciar sesión</a>!</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-xxl-4 mb-5">
