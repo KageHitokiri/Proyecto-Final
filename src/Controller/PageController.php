@@ -44,4 +44,22 @@ class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
+
+    /**
+     * @Route("/ToS", name="ToS")
+     */
+    public function termsOfService(): Response {
+        return $this->render('page/tos.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
+
+    /**
+     * @Route("/privacy", name="privacy")
+     */
+    public function privacy(): Response {
+        return $this->render('page/privacy.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
 }
