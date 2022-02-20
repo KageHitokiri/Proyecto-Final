@@ -1,4 +1,17 @@
 body {
+  background-color: #585858;
+}
+
+.btn-primary {
+  background-color: #ce1515;
+}
+
+.bg-primary {
+  background-color: #ce1515;
+  color: #ce1515;
+}
+
+.bg-ligth {
   background-color: #ccc;
 }
 /*# sourceMappingURL=general.css.map */
