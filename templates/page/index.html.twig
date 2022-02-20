@@ -106,7 +106,7 @@
                         {% if app.user %}
                             <p>¡Bienvenido {{app.user.email}}, sigue leyendo para comprender como funciona el juego!</p>
                         {% else %}
-                            <p>¡Recuerda que para jugar necesitas <a href="">registrarte</a>! y si ya lo has hecho, ¡solo tienes que <a href="">iniciar sesión</a>!</p>
+                            <p>¡Recuerda que para jugar necesitas <a class="{{ app.request.get('_route') == 'register' ? 'active' }}" href="register">registrarte</a>! y si ya lo has hecho, ¡solo tienes que <a class="{{ app.request.get('_route') == 'login' ? 'active' }}" href="login">iniciar sesión</a>!</p>
                         {% endif %}
                     </div>
                 </div>
