@@ -22,3 +22,5 @@
 /tests/
 .env
 /templates/template.html.twig
+/public/css/*.scss
+/public/css/*.css.map
