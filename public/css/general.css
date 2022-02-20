@@ -6,12 +6,11 @@ body {
   background-color: #ce1515;
 }
 
-.bg-primary {
-  background-color: #ce1515;
-  color: #ce1515;
+.nav-link:hover {
+  background-color: #52ca52;
 }
 
-.bg-ligth {
+.card-body {
   background-color: #ccc;
 }
 /*# sourceMappingURL=general.css.map */
